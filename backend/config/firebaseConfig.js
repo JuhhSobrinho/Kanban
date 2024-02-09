@@ -2,7 +2,7 @@ const { initializeApp } = require("firebase-admin");
 const { getFirestore, collection, getDocs } = require('firebase-admin/firestore');
 
 
-const serviceAccountPath = require('./config/kanban-2c325-firebase-adminsdk-4zoqj-97c0f300be.json');
+const serviceAccountPath = require('./kanban-2c325-firebase-adminsdk-4zoqj-97c0f300be.json');
 
 const admin = require('firebase-admin');
 
