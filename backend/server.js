@@ -3,7 +3,6 @@ const { fetchUserData } = require('./models/bdDados.js');
 const express = require('express');
 const cors = require('cors');
 const handler = express();
-const port = process.env.PORT || 3000;
 
 handler.use(cors());
 

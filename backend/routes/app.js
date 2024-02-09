@@ -1,4 +1,5 @@
-const { fetchUserData } = require('./models/bdDados.js');
+
+const { fetchUserData } = require('../models/bdDados.js');
 const express = require('express');
 const cors = require('cors');
 const app = express();
