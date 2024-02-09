@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchData = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/data');
+    const response = await axios.get('https://seu-site-netlify.netlify.app/.netlify/functions/data');
     const data = response.data;
 
     console.log('Dados recebidos:', data);
