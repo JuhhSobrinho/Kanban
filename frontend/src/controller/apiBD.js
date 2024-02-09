@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchData = async () => {
   try {
-    const response = await axios.get('https://kanban-post.netlify.app/netlify/functions/backend/api/data');
+    const response = await axios.get('https://kanban-post.netlify.app/backend/netlify/functions/api/data');
     const data = response.data;
 
     console.log('Dados recebidos:', data);
