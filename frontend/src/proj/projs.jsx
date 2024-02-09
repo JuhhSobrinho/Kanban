@@ -4,11 +4,17 @@ import ThemeToggle from "../componets/ThemeToggle";
 import sol from "../assets/sun-regular.svg";
 import lua from "../assets/moon-regular.svg";
 
+import { fetchData } from "../controller/apiBD";
+
 const savedTheme = localStorage.getItem("theme") || "dark";
 
 function Projs() {
   const [isChecked, setIsChecked] = useState(true);
   const [mostrarMenu, setMostrarMenu] = useState(true);
+  const [data, setData] = useState(null);
+  const [QuadroId,setQuadroId] = useState(null);
+
+  
 
   useEffect(() => {
     if (savedTheme === "dark") {
@@ -16,6 +22,17 @@ function Projs() {
     } else {
       setIsChecked(true);
     }
+
+    const fetchDataAndSetData = async () => {
+      try {
+        const responseData = await fetchData();
+        setData(responseData); // Atualiza o estado com os dados recebidos
+        setQuadroId(responseData ? responseData[0].projectName : null);
+      } catch (error) {
+        console.error("Erro ao obter dados:", error);
+      }
+    };
+    fetchDataAndSetData();
   }, []);
 
   const themeStyles = isChecked
@@ -33,6 +50,14 @@ function Projs() {
   const toggleMostrarMenu = () => {
     setMostrarMenu(!mostrarMenu);
   };
+
+  console.log("o banco", data);
+
+  const quadroSelecao = (projectName) => {
+    setQuadroId(projectName);
+
+  };
+
 
   return (
     <>
@@ -67,20 +92,33 @@ function Projs() {
               Todos Quadros (2)
             </span>
             <section className="coleções-projects">
-              <button className="quadro-selecionado">
-                <lord-icon
-                  src="https://cdn.lordicon.com/pcllgpqm.json"
-                  trigger="hover"
-                  state="hover-squeeze"
-                  colors="primary:#121331,secondary:#21212d,tertiary:#645fc6"
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    paddingRight: "10px",
-                  }}
-                ></lord-icon>
-                <span> Ecom </span>
-              </button>
+              {data && Array.isArray(data) ? (
+                data.map(({ projectName }) => (
+                  <button
+                    className="quadro-selecionado"
+                    key={projectName}
+                    onClick={() => {
+                      quadroSelecao(projectName);
+                    }}
+                  >
+                    <lord-icon
+                      src="https://cdn.lordicon.com/pcllgpqm.json"
+                      trigger="hover"
+                      state="hover-squeeze"
+                      colors="primary:#121331,secondary:#21212d,tertiary:#645fc6"
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        paddingRight: "10px",
+                      }}
+                    ></lord-icon>
+                    <span> {projectName} </span>
+                  </button>
+                ))
+              ) : (
+                <span>Nenhum dado disponível</span>
+              )}
+
               <button className="quadro-selecionado" id="criar-quadro">
                 <lord-icon
                   src="https://cdn.lordicon.com/pcllgpqm.json"
@@ -128,7 +166,7 @@ function Projs() {
             )}
           </button>
         </nav>
-        <Quadro />
+        <Quadro quadroId={data ? QuadroId : null} />
       </main>
     </>
   );

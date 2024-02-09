@@ -137,6 +137,7 @@
     padding: 10px;
     align-items: flex-start;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .titulo-post{
@@ -144,6 +145,7 @@
     font-weight: 600;
     color:  var(--main-text-color);
 }
+
 
 .status-post{
     font-size: 10px;
@@ -165,3 +167,52 @@
     text-align: center;
     cursor: pointer;
 }
+
+#card-visual-post{
+    box-shadow: 0px 0px 10px 10px var(--main-secun-color);
+    right: 35%;
+    z-index: 3;
+    width: 400px;
+    padding: 20px;
+    position: fixed;
+    align-items: flex-end;
+}
+
+.descricao-post{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.titulo-taks{
+    font-size: 15px;
+    font-weight: 600;
+    color:  var(--main-text-color);
+    margin-left: 5px;
+}
+
+.card-taks{
+    width: 90%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background-color: var(--main-secun-color);
+    padding: 5px;
+    margin: 10px;
+    
+}
+
+.main-bolinha{
+    display: flex;
+    align-items: center;
+}
+
+.bolinha{
+    width: 20px;
+    height: 20px;
+    border-radius: 360px;
+}
+
+

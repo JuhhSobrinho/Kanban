@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@firebase/firestore": "^4.4.1",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "firebase": "^10.7.2",
     "firebase-admin": "^12.0.0"
