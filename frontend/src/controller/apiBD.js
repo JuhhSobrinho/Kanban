@@ -5,6 +5,8 @@ export const fetchData = async () => {
     const response = await axios.get('https://kanban-post.netlify.app/api/data');
     const data = response.data;
 
+    console.log("enderpoint", response);
+
     console.log('Dados recebidos:', data);
 
     return data;
