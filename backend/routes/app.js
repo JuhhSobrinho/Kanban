@@ -8,7 +8,7 @@ const port = 3000;
 // Configurar o middleware cors globalmente
 app.use(cors());
 
-app.get('/api/data', async (req, res) => {
+app.get('', async (req, res) => {
   try {
     const userData = await fetchUserData();
     res.json(userData);

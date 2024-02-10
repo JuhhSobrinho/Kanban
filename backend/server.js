@@ -5,7 +5,7 @@ const handler = express();
 
 handler.use(cors());
 
-handler.get('/api/data', async (req, res) => {
+handler.get('https://kanban-post.netlify.app/api/data', async (req, res) => {
   try {
     return {
       statusCode: 200,
