@@ -76,7 +76,7 @@ export function Quadro({ quadroId }) {
           }}
         >
           <span className="titulo-post">{`${taskKey}`}</span>
-          <p className="status-post">2 de 4 {`${tasks[taskKey]}`}</p>
+          <p className="status-post">2 de 4 {`${tasks[index]}`}</p>
         </div>
       ));
     }
