@@ -1,19 +1,13 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
-const express = require('express');
-const cors = require('cors');
+const { fetchUserData } = require('./models/bdDados.js');
 
 const handler = async (event) => {
   try {
-    const subject = event.queryStringParameters.name || 'World'
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${subject}` }),
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
-    }
+    const userData = await fetchUserData();
+    res.json(userData);
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    console.error('Erro ao processar a requisição:', error);
+    res.status(500).json({ error: 'Erro interno no servidor' });
   }
 }
 
