@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter  as Router, Route, Routes, Navigate } from 'react-router-dom';
 import "./App.css";
 import Login from "./login";
 import SingUp from "./singUp";
