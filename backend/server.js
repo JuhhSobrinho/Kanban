@@ -5,7 +5,7 @@ const handler = express();
 
 handler.use(cors());
 
-handler.get(async (req, res) => {
+handler.get(async ()=> {
   try {
     return {
       statusCode: 200,
