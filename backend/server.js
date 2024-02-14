@@ -1,14 +1,25 @@
-// Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const { fetchUserData } = require('./models/bdDados.js');
 
-const handler = async (event, res) => {
+const handler = async (event) => {
   try {
     const userData = await fetchUserData();
-    res.json(userData);
+    return {
+      statusCode: 200,
+      body: JSON.stringify(userData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
   } catch (error) {
     console.error('Erro ao processar a requisição:', error);
-    res.status(500).json({ error: 'Erro interno no servidor' });
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Erro interno no servidor' }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
   }
-}
+};
 
-module.exports = { handler }
+module.exports = { handler };
